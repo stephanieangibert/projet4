@@ -1,0 +1,202 @@
+body{
+    background-color:black;
+}
+h1{
+    color:white;
+  
+    width: 200px;
+}
+
+.image{
+    position: relative
+}
+.image img{
+    padding-left: 5%;
+}
+.billet{
+    position: absolute;
+    left:17%;
+    top:40%;
+    color:white;
+    font-size:300%;
+}
+h5{
+    color:orangered;
+    position: absolute;
+    left:79.5%;
+    top:50%;
+   }
+.banniere{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+#intro{
+    color:white;
+    width: 40%;
+    padding: 20%;
+    font-size: 130%;
+    position: relative;
+      
+   
+}
+.fa-eye{
+    color:white;
+    font-size: 500%;
+    position: absolute;
+    left:80%;
+    top:40%;
+}
+#oeil
+{
+    color:white;
+     
+}
+
+label{
+    color: white;
+}
+#formulaire{
+    border:solid white 2px;   
+    width: 30%;
+    padding:2%;
+    margin: 15% auto;
+}
+#pseudo
+{
+    margin-left: 12%;
+    width: 200px;
+    margin-top: 2%;
+}
+#motdepasse{
+    margin-left: 3%;
+    width: 200px;
+}
+#motdepasse1{
+    margin-left: 3%;
+    width: 200px;
+}
+#mail{
+    margin-left: 13%;
+    width: 200px;
+}
+#submit{
+    margin-left: 70%;
+    margin-top: 5%;
+    color:white;
+    background-color: orangered;
+    font-weight: bold;
+    height: 30px;
+}
+.utilisateur
+{
+    font-size: 120%;
+    color:white;
+}
+h6{
+    color:white;
+ 
+}
+#connex{
+    display:flex;
+    flex-direction: row;
+}
+#submit2{
+    margin-left: 4%;
+}
+.commentaire{
+    color:white;
+}
+.fff{
+    color:white;
+}
+.news p
+{
+    background-color:#CCCCCC;
+    margin-top:0px;
+    
+}
+.news
+{
+    width:60%;
+    margin-left: 3%;
+    
+}
+.titre{
+   color:white;
+}
+.news a{
+    color:orangered;
+    font-weight: bold;
+}
+.commentaire a{
+    list-style: none;
+    color: orangered;
+    font-weight: bold;
+    font-size: 120%;
+    text-decoration: none;
+    margin-left: 3%;
+}
+.commentaire{
+    list-style: none;
+    color: orangered;
+    font-weight: bold;
+    font-size: 120%;
+    text-decoration: none;
+    margin-left: 3%;
+
+}
+.auteur{
+    color:orangered;
+    margin-left: 3%;
+}
+.textcommentaire{
+    color:white;
+    margin-left: 3%;
+}
+#laissercommentaire
+{
+    border-top: solid 3px orangered;
+}
+#comment{
+    margin-left: 3%;
+    margin-top: 2%;
+}
+.pseudo{
+    margin-left: 3%;
+    margin-top: 2%;
+    color:orangered;
+    margin-right: 2%; 
+}
+#submit3{
+    margin-left: 3%;
+    margin-top: 1%;
+    color: orangered;
+    font-weight: bold;
+}
+.droite{
+    border:solid white 2px;
+}
+.signaler{
+    width: 400px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-left: 2%;
+}
+#signaler{
+    width: 65px;
+    height: 25px;
+    background-color: chartreuse;
+    color:white;
+    text-align: center; 
+    border-radius: 5%;   
+}
+#signaler a{
+    list-style: none;
+    text-decoration: none;
+    color:white;
+
+}

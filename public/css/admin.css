@@ -1,0 +1,81 @@
+*{
+    background-color: grey;
+}
+.btn1{
+background-color: red;
+border-radius: 12%;
+
+}
+a{
+    list-style-type: none;
+    text-decoration: none;
+    background-color: red;
+    color: white;
+}
+.btn2{
+    background-color: blue;
+    border-radius: 8%;
+    
+}
+.btn3{
+    background-color: green;
+    border-radius: 8%;
+    
+}
+.article
+{
+    width: 600px;
+}
+.btn4{
+    background-color: red;
+    border-radius: 8%;
+    width: 70px;
+    height: 30px;
+    text-align: center;
+    padding-top:3%;
+  }
+  .btn5{
+    background-color: blue;
+    border-radius: 8%;
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    padding-top:3%;
+  }
+  .btn6{
+    background-color: green;
+    border-radius: 8%;
+    width: 70px;
+    height: 30px;
+    text-align: center;
+    padding-top:3%;
+  }
+  table{
+      border: solid black 3px;
+      margin: 0 auto;
+  }
+  h2{
+     text-align: center;
+  }
+  .titre{
+    text-align: center;
+    font-size: 150%;
+    color:red;
+    font-weight: bold;
+  }
+  td{
+    text-align: center;
+  }
+  td.rouge
+  {
+    background-color: red;
+    width: 25px;
+    border-radius: 3%;
+  
+  }
+  td.rien{
+    background-color: grey;
+  }
+  
+
+    

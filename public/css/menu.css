@@ -1,0 +1,74 @@
+.menu
+{
+    display: flex;
+    flex-direction: row;
+ 
+}
+nav{
+    display: flex;
+    flex-direction: row;  
+    align-items: baseline;  
+   
+}
+#connex{
+    display:flex;
+    flex-direction:row;
+    align-items: baseline; 
+}
+ul li{
+    padding-right: 50%;
+    list-style-type: none;
+    
+}
+li{
+    color:white;
+   
+}
+.inscript{
+    padding-left: 72%;
+}
+nav a{
+    text-decoration: none;
+    color:white;
+    font-size: 150%;
+}
+#mail2
+{
+    height:22px;
+    border-radius:5%;
+}
+#motdepasse22{
+    height:22px;
+    border-radius:5%;
+
+}
+#submit2{
+    height:22px;
+    border-radius:5%;
+    color: white;
+    background-color: orangered;
+
+}
+#mailconnexion{
+    width: 64px;
+    padding-left: 5%;
+}
+#mdpconnexion{
+    width: 120px;
+    padding-left: 4px;
+}
+.bienvenue{
+    font-size: 150%;
+    color:white;
+    width: 1000px;
+}
+
+.boutonvert{
+   
+    left:90%;  
+    list-style-type: none;
+    background-color: chartreuse;
+    border-radius:5%;
+    padding:1%;
+    font-weight: bold;
+}
