@@ -1,22 +1,18 @@
-<?php ob_start(); ?>
+<?php ob_start(); ?> 
 <nav>
 <H1>Jean Forteroche</H1>
-           <!--   <form id="connex" action="" method="POST">
-                 <label id="mailconnexion" for="mail" >E mail</label>
-                 <input  type="email" name="email" id="mail2"/>
-                 <label id="mdpconnexion" for="motdepasse" >Mot de passe</label>
-                 <input  type="password" name="pass" id="motdepasse22"/>
-                  <input type="submit" id="submit2" name="submitConnex" value="ok"> -->
-                 <!-- <a href="index.php?action=menu" id="submit2">Ok</a>
-         >
-             </form> --> 
+<a href="index.php?action=connexion"><div id="connexion">Connexion</div></a>
+                       
                 <ul class="menu">
                    <li class="inscript"><a href="index.php?action=subscribe">Inscription</a></li>                  
                    <li><a href="index.php">Chapitres</a></li>
                 </ul>
-               
+               <?php  if(isset($erreur2)){
+         echo '<font color="white">'. $erreur2.'</font>'; var_dump($erreur2); }
+     ?>
          </nav>
-       
+
+
 <div id="formulaire">
 <form action="" method="POST">
     <p ><label for="pseudo" >Pseudo</label><input  type="text" name="pseudo" id="pseudo" value="<?php if(isset($pseudo)) { echo $pseudo; } ?>" /></p>
@@ -27,7 +23,7 @@
                </form>
                <?php
                if(isset($erreur)){
-    echo '<font color="white">'. $erreur.'</font>';}?> 
+    echo '<font color="white">'. $erreur.'</font>'; }?> 
                </div>
               
 

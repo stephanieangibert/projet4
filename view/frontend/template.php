@@ -1,3 +1,4 @@
+<?session_start()?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -10,8 +11,7 @@
 	<title>Le Blog de l'écrivain</title>
 </head>
 <body>
-
-
+ 
   
     <?= $content?>
     <script src="public/js/intro.js"> </script>

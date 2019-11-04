@@ -1,44 +1,58 @@
 <?php
 session_start();
-require('model/frontend.php');
+//require('controller/frontend.php');
+// namespaces utilisés
+
+require('model/postManager.php'); 
+require('model/commentManager.php');
+require('model/reportManager.php');
+require('model/MemberManager.php');
 
 function listPosts()
 {
-    //$managerP=new postMananger();
-    //$posts=$managerP->getPosts();
-    $posts = getPosts();
+    $managerP=new postManager();
+    $posts=$managerP->getPosts();
+    //$posts = getPosts();
 
     require('view/frontend/listPostsView.php');
 }
 
 function post()
 {
-    $post = getPost($_GET['id']);
-    $comments = getComments($_GET['id']); 
+    $managerPost=new postManager();
+    $post=$managerPost->getPost($_GET['id']);;
+    $comments=$managerPost->getComments($_GET['id']); 
+   // $post = getPost($_GET['id']);
+   // $comments = getComments($_GET['id']); 
 
     require('view/frontend/postView.php');
 }
 function addComment($postId, $author, $comment)
 {
-    $affectedLines = postComment($postId, $author, $comment);
-
+     $addCom=new commentManager();
+     $affectedLines=$addCom-> postComment($postId, $author, $comment); 
+    //$affectedLines = postComment($postId, $author, $comment); 
+ 
     if ($affectedLines === false) {
         throw new Exception('Impossible d\'ajouter le commentaire !');
     }
     else {
         header('Location: index.php?action=post&id=' . $postId);
     }
+   
 }
 
 function reportComment($id,$postid)
 {
-   $reportCom=reporting($id);
+   $report= new reportManager();
+   $reportCom=$report->reporting($id);
+   //$reportCom=reporting($id);
    header('Location: index.php?action=post&id=' . $postid);
 }
 function displaySubscribe()
 {
    
-   if(isset($_POST['submitsub'])){
+     if(isset($_POST['submitsub'])){
       $pseudo = htmlspecialchars($_POST['pseudo']);
       $mail = htmlspecialchars($_POST['email']);
       $mdp=$_POST['pass'];
@@ -50,12 +64,16 @@ function displaySubscribe()
          if($pseudolength <= 255) {
          
                if(filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-                  $mailexist=subscribe($mail);
+                  $memberM=new MemberManager();
+                  $mailexist=$memberM->subscribe($mail);
+                 // $mailexist=subscribe($mail);
                   if($mailexist == 0) {
                      if($mdp == $mdp1) {
                        $mdp= password_hash($_POST['pass'], PASSWORD_DEFAULT);
                        $mdp1 = password_hash($_POST['pass1'], PASSWORD_DEFAULT);
                        $insertmbr=member($pseudo, $mail, $mdp,$admin);                 
+                   
+                       
                         $erreur = "Votre compte a bien été créé !";
                      } else {
                         $erreur = "Vos mots de passe ne correspondent pas !";
@@ -81,58 +99,54 @@ function displaySubscribe()
 }
 function displayConnex()
 {
-   if(isset($_POST['submitConnex'])){
-      $mailconnect =htmlspecialchars($_POST['email']) ;   
-      $mdpconnect=htmlspecialchars($_POST['pass']); 
-        if(isset($mailconnect) AND !empty($mdpconnect)) {         
-         $userexist=mailConnex($mailconnect);
-         $adminexist=adminConnex();                    
-          
-                 if($userexist == 1) {     
-                  $userinfo=usersInfo($mailconnect);
+ 
+    if(isset($_POST['submitConnex'])){
+      $mailconnect = $_POST['email'];   
+      $mdpconnect=$_POST['pass']; 
+        if(isset($mailconnect) AND !empty($mdpconnect)) {    
+           $memberM=new MemberManager();
+
+         $userexist= $memberM->mailConnex($mailconnect);        
+                      
+                 if($userexist->rowCount() == 1) {                 
+               
+                 $userinfo=$userexist->fetch();
                   if(password_verify($mdpconnect,$userinfo['pass'])){               
-                     $_SESSION['pseudo'] = $userinfo['pseudo']; 
-                     $_SESSION['pass']=$userinfo['pass']; ;
-                     $_SESSION['email']=$userinfo['email']; 
-                     $_SESSION ['users']= $mailconnect;                               
-                          
+                     $_SESSION['pseudo'] = $userinfo['pseudo'];                   
+                     $_SESSION['id']=$userinfo['id']; 
+                     $_SESSION['admin']=$userinfo['admin']; 
                    
-                
+                                   
+                    header('location:index.php');  
+                     
+                 
                   }  
                  
-                  else{
-                      $erreur = "Mauvais mail ou mot de passe !";
-                     
-                   
-                  } 
-                                
+                  else{ $erreur2 = "Mauvais mail ou mot de passe !";
+                    
+                  }                                 
       
                } else {
-                 $erreur = "Mauvais mail ou mot de passe !";
-                
-                   }
-            if($adminexist['email']==$mailconnect)  {
-             ?> 
-             <nav>        
-             <p class="boutonvert"><a href="admin.php">ADMIN</a></p>      
-             </nav>
-              <?php   }
+                 $erreur2 = "Mauvais mail ou mot de passe !";
+                 }
+            
            
    } else {
-   $erreur = "Tous les champs doivent être complétés !";
-  
-   
-   }
-}
-else{ 
-  
-   require('view/frontend/connexion.php');
-   }
+   $erreur2 = "Tous les champs doivent être complétés !"; 
      
 
-   require('view/frontend/connexion.php');
-
+    }
+   
+  
+ }
+ require('view/frontend/connexion.php');
+}    
+ function displayDisconnection()
+{
+   session_destroy();
+   require('view/frontend/disconnection.php');
 }
 
+ 
 
 

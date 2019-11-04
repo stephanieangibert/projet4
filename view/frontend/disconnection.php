@@ -1,29 +1,17 @@
 <?php ob_start(); ?> 
- <nav>
+<nav>
 <H1>Jean Forteroche</H1>
-             <form id="connex" action="" method="POST">
-                 <label id="mailconnexion" for="mail" >E mail</label>
-                 <input  type="email" name="email" id="mail2"/>
-                 <label id="mdpconnexion" for="motdepasse" >Mot de passe</label>
-                 <input  type="password" name="pass" id="motdepasse22"/>
-                
-       <input type="submit" id="submit2" name="submitConnex" value="ok" > 
-        
-                
-             </form>
-           
-             
+<a href="index.php?action=connexion"><div id="connexion">Connexion</div></a>
+                       
                 <ul class="menu">
                    <li class="inscript"><a href="index.php?action=subscribe">Inscription</a></li>                  
                    <li><a href="index.php">Chapitres</a></li>
                 </ul>
-               
+               <?php  if(isset($erreur2)){
+         echo '<font color="white">'. $erreur2.'</font>'; var_dump($erreur2); }
+     ?>
          </nav>
-         <?php  if(isset($erreur2)){
-         echo '<font color="white">'. $erreur2.'</font>'; }
-     ?> 
-     
-     <div class="banniere">
+         <div class="banniere">
             <div class="image"><img src="public/image/livre.jpg">
                  <h2 class="billet">Billet simple pour l'Alaska</h2>
             </div>
@@ -37,9 +25,5 @@
                                </div>    
 
     </div>
-         <?php $content = ob_get_clean(); ?>
+<?php $content = ob_get_clean(); ?>
  <?php require('view/frontend/template.php');?>
-
-        
-
-

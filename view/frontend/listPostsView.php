@@ -1,22 +1,44 @@
-<?php ob_start(); ?> 
-<nav>
-<H1>Jean Forteroche</H1>
-             <form id="connex" action="index.php?action=menu" method="POST">
-                 <label id="mailconnexion" for="mail" >E mail</label>
-                 <input  type="email" name="email" id="mail2"/>
-                 <label id="mdpconnexion" for="motdepasse" >Mot de passe</label>
-                 <input  type="password" name="pass" id="motdepasse22"/>
-                  <input type="submit" id="submit2" name="submitConnex" value="ok"> 
+
+<?php ob_start();?>
+<?php
+if(isset($_SESSION['admin'])){
+    if(($_SESSION['admin']=='1')>0){
+        var_dump($_SESSION ['pseudo']);
+        echo'<nav>   
+        <ul class="menu">             
+        <li ><a href=index.php?action=disconnection>Deconnexion</a></li>    
+        <li class="bienvenue"> Bienvenue   '.ucfirst($_SESSION["pseudo"]);echo'</li>     
+        <p class="boutonvert"><a href="index.php?action=admin">ADMIN</a></p>      
+        </nav>';
+          
+      }elseif((strlen( $_SESSION ['pseudo']))!=0){
+          
+          echo '   <nav>
+          <ul class="menu">             
+        <li ><a href=index.php?action=disconnection>Deconnexion</a></li>    
+        <li class="bienvenue"> Bienvenue   '.ucfirst($_SESSION["pseudo"]);echo'</li>
+        <li><a href="index.php">Chapitres</a></li>
+          </ul>
+          </nav>';
+     } }else{
+          echo'
+          <nav>
+      <H1>Jean Forteroche</H1>
+                  <a href="index.php?action=connexion"><div id="connexion">Connexion</div></a>
                 
-                <?php if(isset($erreur)){
-    echo '<font color="white">'. $erreur.'</font>';}?> 
-             </form>
-                <ul class="menu">
-                   <li class="inscript"><a href="index.php?action=subscribe">Inscription</a></li>                  
-                   <li><a href="index.php">Chapitres</a></li>
-                </ul>
-               
-         </nav>
+                      <ul class="menu">
+                         <li class="inscript"><a href="index.php?action=subscribe">Inscription</a></li>                  
+                         <li><a href="index.php">Chapitres</a></li>
+                      </ul>
+                     
+               </nav>';
+      
+      }?>
+    
+}
+
+
+
               
 <div class="banniere">
             <div class="image"><img src="public/image/livre.jpg">
@@ -60,6 +82,7 @@ while ($data = $posts->fetch())
 } 
 
 $posts->closeCursor();
+ 
 ?>
 <?php $content = ob_get_clean(); ?>
 

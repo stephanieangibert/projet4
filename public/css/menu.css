@@ -16,7 +16,7 @@ nav{
     align-items: baseline; 
 }
 ul li{
-    padding-right: 50%;
+    padding-right: 20%;
     list-style-type: none;
     
 }
@@ -71,4 +71,14 @@ nav a{
     border-radius:5%;
     padding:1%;
     font-weight: bold;
+}
+#connexion{
+   
+    background-color: orangered;
+    color:white;
+    font-weight: bold;
+    width: 120px;
+    height: 30px;
+    border-radius: 5%;
+    margin-right: 50%;
 }
