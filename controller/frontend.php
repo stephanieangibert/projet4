@@ -1,16 +1,15 @@
 <?php
 session_start();
-//require('controller/frontend.php');
-// namespaces utilisés
 
-require('model/postManager.php'); 
-require('model/commentManager.php');
-require('model/reportManager.php');
-require('model/MemberManager.php');
+
+require_once('model/postManager.php'); 
+require_once('model/commentManager.php');
+require_once('model/reportManager.php');
+require_once('model/MemberManager.php');
 
 function listPosts()
 {
-    $managerP=new postManager();
+    $managerP=new PostManager();
     $posts=$managerP->getPosts();
     //$posts = getPosts();
 
@@ -19,9 +18,10 @@ function listPosts()
 
 function post()
 {
-    $managerPost=new postManager();
-    $post=$managerPost->getPost($_GET['id']);;
-    $comments=$managerPost->getComments($_GET['id']); 
+    $managerPost=new PostManager();
+    $commentPost=new CommentManager();
+    $post=$managerPost->getPost($_GET['id']);
+    $comments= $commentPost->getComments($_GET['id']); 
    // $post = getPost($_GET['id']);
    // $comments = getComments($_GET['id']); 
 
@@ -29,7 +29,7 @@ function post()
 }
 function addComment($postId, $author, $comment)
 {
-     $addCom=new commentManager();
+     $addCom=new CommentManager();
      $affectedLines=$addCom-> postComment($postId, $author, $comment); 
     //$affectedLines = postComment($postId, $author, $comment); 
  
@@ -44,7 +44,7 @@ function addComment($postId, $author, $comment)
 
 function reportComment($id,$postid)
 {
-   $report= new reportManager();
+   $report= new ReportManager();
    $reportCom=$report->reporting($id);
    //$reportCom=reporting($id);
    header('Location: index.php?action=post&id=' . $postid);

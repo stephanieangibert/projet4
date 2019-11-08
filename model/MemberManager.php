@@ -1,9 +1,8 @@
 <?php
-//namespace P4_Angibert_Stephanie;
 require_once("model/Manager.php");
 class MemberManager extends Manager
 {
-    function subscribe($mail)
+    public function subscribe($mail)
 {
     $db = $this->dbConnect();
     $reqmail = $db->prepare("SELECT * FROM users WHERE email = ?");
@@ -11,7 +10,7 @@ class MemberManager extends Manager
     $mailexist = $reqmail->rowCount();
     return $mailexist;
 }
-function member($pseudo, $mail, $mdp,$admin)
+public function member($pseudo, $mail, $mdp,$admin)
 {  
     $db = $this->dbConnect();
     $admin=0;
@@ -20,7 +19,7 @@ function member($pseudo, $mail, $mdp,$admin)
     return  $insertmbr; 
     var_dump($pseudo, $mail, $mdp,$admin);        
 }
- function mailConnex($mailconnect)
+ public function mailConnex($mailconnect)
 {   
     $db = $this->dbConnect();
     $requser = $db->prepare("SELECT * FROM users WHERE email = ?");
@@ -29,7 +28,7 @@ function member($pseudo, $mail, $mdp,$admin)
     return $requser; 
     
 } 
- function usersInfo($mailconnect)
+ public function usersInfo($mailconnect)
 {
     $db = $this->dbConnect();
     $req = $db->prepare("SELECT * FROM users WHERE email = ?");
@@ -37,20 +36,20 @@ function member($pseudo, $mail, $mdp,$admin)
     $userinfo = $req->fetch();
     return $userinfo;
 }  
-function adminConnex()
+public function adminConnex()
 {
     $db = $this->dbConnect();
     $reqadmin =$db->query("SELECT email FROM users WHERE admin =1");
     $adminexist=$reqadmin->fetch();
     return $adminexist;
 }
-function addUsers()
+public function addUsers()
 {
     $db = $this->dbConnect();
     $sql = $db->query('SELECT * FROM users ORDER BY id DESC');
     return $sql;
 }
-function deleteUs($id)
+public function deleteUs($id)
 {
     $db = $this->dbConnect();
     $delus =$db->prepare("DELETE FROM users  WHERE id = ?");
@@ -58,7 +57,7 @@ function deleteUs($id)
     $del=$delus->fetch();
     return $del;
 }
-function editUs($idUs)
+public function editUs($idUs)
 {
     $db = $this->dbConnect();
     $sqed =$db->prepare( "SELECT * FROM users where id =?");

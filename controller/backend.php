@@ -1,19 +1,20 @@
 <?php
 
-//require('model/backend.php');
-// namespaces utilisés
 
-use \P4_Angibert_Stephanie\Model\postManager;
-use \P4_Angibert_Stephanie\Model\commentManager;
-use \P4_Angibert_Stephanie\Model\reportManager;
-use \P4_Angibert_Stephanie\Model\memberManager;
+
+require_once('model/postManager.php'); 
+require_once('model/commentManager.php');
+require_once('model/reportManager.php');
+require_once('model/MemberManager.php');
 
 function adminConnection()
 {   
-    $memberU=new memberManager();
+    $memberU=new MemberManager();
+    $commentU=new CommentManager();
+    $postU=new PostManager();
     $sql=$memberU->addUsers();
-    $sqcom=$memberU->addComments();
-    $sqposts=$memberU->addPosts();;
+    $sqcom=$commentU->addComments();
+    $sqposts=$postU->addPosts();
     //$sql= addUsers();
     //$sqcom=addComments();
     //$sqposts=addPosts();
@@ -21,7 +22,7 @@ function adminConnection()
 }
 function deleteUsers($id)
 {
-    $memberU=new memberManager();
+    $memberU=new MemberManager();
     $del=$memberU->deleteUs($id);
     //$del=deleteUs($id);
     header('location:index.php?action=admin');    
@@ -29,7 +30,7 @@ function deleteUsers($id)
 }
 function deleteComments($idCom)
 {
-    $comment=new commentManager();
+    $comment=new CommentManager();
     $delComm= $comment->deleteCom($idCom);
     //$delComm=deleteCom($idCom);
     header('location:index.php?action=admin'); 
@@ -37,14 +38,14 @@ function deleteComments($idCom)
 }
 function deletePosts($idPost)
 {   
-    $post=new postManager();
+    $post=new PostManager();
     $delPost=$post->deletePost($idPost);
     //$delPost=deletePost($idPost);
     header('location:index.php?action=admin'); 
 }
 function editUser($idUs)
 {
-    $memberU=new memberManager();
+    $memberU=new MemberManager();
     $sqedit=$memberU->editUs($idUs);
     //$sqedit=editUs($idUs);
     require('view/backend/editUser.php');  
@@ -52,7 +53,7 @@ function editUser($idUs)
 }
 function editPost($idPt)
 { 
-    $postcom=new postManager();
+    $postcom=new PostManager();
     $sqeditpo=$postcom->editPosts($idPt);
     //$sqeditpo=editPosts($idPt);
     require('view/backend/editPost.php'); 
@@ -81,8 +82,9 @@ function addPost($title, $content)
            
           
         }   else   {  
-           
-            $newPost=addP($title, $content);            
+            $addPost=new PostManager();
+            $newPost=$addPost->addP($title, $content);
+           // $newPost=addP($title, $content);            
          
             echo   "<font color='green'>Le chapitre a été ajouté." ; 
             echo   "<br/><a href='index.php'>Voir sur le site</a>" ; 
@@ -94,16 +96,18 @@ function addPost($title, $content)
 }
 function displayUpdate($idPt)
 {
-    $post=new postManager();
+    $post=new PostManager();
     $sqeditpo=$post->editPosts($idPt);;
     //$sqeditpo=editPosts($idPt);
     require('view/backend/update.php'); 
 
-    if((!empty($_POST['title'])) && !empty($_POST['content'])&&!empty($_POST['submit'])) {
+    if(!empty($_POST['title']) && !empty($_POST['content'])&&!empty($_POST['submit'])) {
         $id=$_POST['id'];
          $title=$_POST['title'];
          $content=$_POST['content'];  
-         $postup=upd($title,$content,$id);
+         $post=new PostManager();
+         $postup=$post->upd($title,$content,$id);
+        // $postup=upd($title,$content,$id);
          echo"La modification a été prise en compte !";      
      
      

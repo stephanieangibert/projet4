@@ -31,3 +31,30 @@
              </tr> 
          </table> 
      </form> 
+     <script type="text/javascript" src="public/js/tiny_mce/tiny_mce.js"></script>
+<script type="text/javascript">
+  tinyMCE.init({
+    
+    mode : "exact", 
+    // id ou class, des textareas appelés
+    elements : "commentaire", 
+    // en mode avancé, cela permet de choisir les plugins
+    theme : "advanced", 
+    // langue
+   //language : "fr", 
+    // liste des plugins
+    theme_advanced_toolbar_location : "top",
+    theme_advanced_buttons1 : "bold,italic,underline,strikethrough,sup,forecolor,separator,"
+    + "justifyleft,justifycenter,justifyright,justifyfull,formatselect,"
+    + "bullist,numlist,outdent,indent,separator,cleanup,|,undo,redo,|,",
+    theme_advanced_buttons2 : "",
+    theme_advanced_buttons3 : "",
+    height:"250px",
+    width:"600px"
+  });
+
+  
+</script>     
+  
+</body>
+</html>
