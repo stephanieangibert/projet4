@@ -23,7 +23,7 @@
 
     <strong>Modification du billet</strong>
     <br/>
-<textarea rows="10" cols="60" name="content" ><?php echo $sqeditpo['content']; ?></textarea>    
+<textarea rows="10" cols="60" name="content" id="commentaire" ><?php echo $sqeditpo['content']; ?></textarea>    
                             
 
 
