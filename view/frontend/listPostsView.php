@@ -2,8 +2,7 @@
 <?php ob_start();?>
 <?php
 if(isset($_SESSION['admin'])){
-    if(($_SESSION['admin']=='1')>0){
-        var_dump($_SESSION ['pseudo']);
+    if(($_SESSION['admin']=='1')>0){       
         echo'<nav>   
         <ul class="menu">             
         <li ><a href=index.php?action=disconnection>Deconnexion</a></li>    
@@ -59,6 +58,7 @@ if(isset($_SESSION['admin'])){
 
 
 <?php
+
 while ($data = $posts->fetch())
 {
     ?>

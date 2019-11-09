@@ -9,16 +9,24 @@ require_once('model/MemberManager.php');
 
 function adminConnection()
 {   
-    $memberU=new MemberManager();
-    $commentU=new CommentManager();
-    $postU=new PostManager();
-    $sql=$memberU->addUsers();
-    $sqcom=$commentU->addComments();
-    $sqposts=$postU->addPosts();
-    //$sql= addUsers();
-    //$sqcom=addComments();
-    //$sqposts=addPosts();
-    require('view/backend/admin.php');
+   if (isset($_SESSION['admin'])){
+       if ($_SESSION['admin']==1){
+        $memberU=new MemberManager();
+        $commentU=new CommentManager();
+        $postU=new PostManager();
+        $sql=$memberU->addUsers();
+        $sqcom=$commentU->addComments();
+        $sqposts=$postU->addPosts();
+        
+        require('view/backend/admin.php');
+
+       }
+       else{
+           echo"Vous n'êtes pas administrateur du site !";
+       }
+    
+   }
+   
 }
 function deleteUsers($id)
 {

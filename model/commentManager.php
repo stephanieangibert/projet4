@@ -33,14 +33,7 @@ public function deleteCom($idCom)
     $delComm=$delCom->fetch();
     return $delComm;
 }
-public function deleteComAssociatedPost($idCom)
-    {
-        $db = $this->dbConnect();
-        $delComAs=$db->prepare("DELETE FROM comments  WHERE post_id = ?");
-        $delComAs->execute(array($idCom));
-        $delComAssoc=$delComAs->fetch();
-        return $delComAssoc;
-    }
+
 
 public function addComments()
 {
