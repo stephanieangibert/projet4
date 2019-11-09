@@ -74,9 +74,9 @@ while ($data = $posts->fetch())
     // On affiche le contenu du billet
     echo nl2br(($data['content']));
     ?>   
-   
-    <em><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Commentaires</a></em>
- 
+  
+    <div class="comment" ><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Commentaires</a></div>
+    </p>
 </div>
 <?php
 } 

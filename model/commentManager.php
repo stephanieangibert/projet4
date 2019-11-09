@@ -22,8 +22,8 @@ public function addPseudo()
 {
     $db = $this->dbConnect();
     $sth = $db->query('SELECT comments.comment,users.pseudo FROM users,comments WHERE comments.author=users.id');
-    
-    return $sth;
+    $resultat=$sth->fetch();
+    return $resultat;
 }
 public function deleteCom($idCom)
 {
@@ -33,6 +33,15 @@ public function deleteCom($idCom)
     $delComm=$delCom->fetch();
     return $delComm;
 }
+public function deleteComAssociatedPost($idCom)
+    {
+        $db = $this->dbConnect();
+        $delComAs=$db->prepare("DELETE FROM comments  WHERE post_id = ?");
+        $delComAs->execute(array($idCom));
+        $delComAssoc=$delComAs->fetch();
+        return $delComAssoc;
+    }
+
 public function addComments()
 {
     $db = $this->dbConnect();

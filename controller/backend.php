@@ -40,6 +40,7 @@ function deletePosts($idPost)
 {   
     $post=new PostManager();
     $delPost=$post->deletePost($idPost);
+    $delComAssoc=$post->deleteComAssociatedPost($idPost);
     //$delPost=deletePost($idPost);
     header('location:index.php?action=admin'); 
 }

@@ -66,13 +66,11 @@ function displaySubscribe()
          
                if(filter_var($mail, FILTER_VALIDATE_EMAIL)) {
                   $memberM=new MemberManager();
-                  $mailexist=$memberM->subscribe($mail);
-                 // $mailexist=subscribe($mail);
+                  $mailexist=$memberM->subscribe($mail);              
                   if($mailexist == 0) {
                      if($mdp == $mdp1) {
                        $mdp= password_hash($_POST['pass'], PASSWORD_DEFAULT);
-                       $mdp1 = password_hash($_POST['pass1'], PASSWORD_DEFAULT);
-                       //$insertmbr=member($pseudo, $mail, $mdp,$admin);                 
+                       $mdp1 = password_hash($_POST['pass1'], PASSWORD_DEFAULT);                                     
                           $insertmbr=$memberM->member($pseudo, $mail, $mdp,$admin); 
                        
                         $erreur = "Votre compte a bien été créé !";
@@ -147,6 +145,7 @@ function displayConnex()
 {
    session_destroy();
    require('view/frontend/disconnection.php');
+   header('location:index.php');
 }
 
  

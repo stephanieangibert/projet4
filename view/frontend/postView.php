@@ -1,4 +1,4 @@
-<?session_start()?>
+
 <? ob_start(); ?> 
 <?php if (isset($_SESSION['pseudo'])){
 //if((strlen($_SESSION['pseudo']))!=0){
@@ -62,7 +62,8 @@
 
 
 // $post->closeCursor();
-$resultat=$sth->fetch();
+$addPseud=new commentManager();
+$resultat=$addPseud->addPseudo();
 while ($comment = $comments->fetch())  
 {
  ?>
@@ -84,21 +85,21 @@ while ($comment = $comments->fetch())
 <?php 
 } // Fin de la boucle des commentaires
 $comments->closeCursor();
-if(isset($_POST['pseudo'])){
- echo'<div>
- <form id="laissercommentaire" action= "index.php?action=addComment&amp;id=<?= $post[\'id\'] ?>" method="POST">
+if(isset($_SESSION['pseudo'])){
+ echo'
+ <form id="laissercommentaire" action= "index.php?action=addComment&amp;id=' .$post['id'].' " method="POST">
         
        <label for="commentaire" class="commentaire" >Commentaire</label>
        <br>
        
         <textarea type="text" name="comment" rows="10" cols="60" id="comment"></textarea>
         <br>
-        <input type="hidden" name="post" value="<?php $_GET[\'id\']?>"/>
+        <input type="hidden" name="post" value="'.$_GET['id'].'"/>
         
       <input type="submit" id="submit3" value="envoyer">
 
-</form>
-</div>';}?>
+</form>';}?>
+
 
 
 <?php $content = ob_get_clean(); ?>
