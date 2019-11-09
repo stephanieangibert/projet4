@@ -17,7 +17,7 @@ public function member($pseudo, $mail, $mdp,$admin)
     $insertmbr = $db->prepare("INSERT INTO users(pseudo, email, pass,admin) VALUES(?, ?, ?,?)");
     $insertmbr->execute(array($pseudo, $mail, $mdp,$admin));  
     return  $insertmbr; 
-    var_dump($pseudo, $mail, $mdp,$admin);        
+          
 }
  public function mailConnex($mailconnect)
 {   

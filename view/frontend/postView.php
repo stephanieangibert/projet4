@@ -61,11 +61,17 @@
 
 
 // $post->closeCursor();
-while ($comment = $comments->fetch())
+$resultat=$sth->fetch();
+while ($comment = $comments->fetch())  
 {
-?>
+ ?>
  
-<p class="auteur"><strong><?php echo htmlspecialchars($comment['author']); ?></strong> le <?php echo $comment['comment_date']; ?></p>
+  <p class="auteur"><strong><?php echo htmlspecialchars($resultat['pseudo']); ?></strong> le <?php echo $comment['comment_date']; ?></p>
+
+ 
+ 
+  
+ 
 
 <div class="signaler">   
 <p class="textcommentaire"><?php echo nl2br(($comment['comment'])); ?></p>

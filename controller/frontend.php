@@ -22,6 +22,7 @@ function post()
     $commentPost=new CommentManager();
     $post=$managerPost->getPost($_GET['id']);
     $comments= $commentPost->getComments($_GET['id']); 
+    $sth=$commentPost->addPseudo();
    // $post = getPost($_GET['id']);
    // $comments = getComments($_GET['id']); 
 
@@ -71,8 +72,8 @@ function displaySubscribe()
                      if($mdp == $mdp1) {
                        $mdp= password_hash($_POST['pass'], PASSWORD_DEFAULT);
                        $mdp1 = password_hash($_POST['pass1'], PASSWORD_DEFAULT);
-                       $insertmbr=member($pseudo, $mail, $mdp,$admin);                 
-                   
+                       //$insertmbr=member($pseudo, $mail, $mdp,$admin);                 
+                          $insertmbr=$memberM->member($pseudo, $mail, $mdp,$admin); 
                        
                         $erreur = "Votre compte a bien été créé !";
                      } else {
@@ -140,6 +141,7 @@ function displayConnex()
   
  }
  require('view/frontend/connexion.php');
+ 
 }    
  function displayDisconnection()
 {

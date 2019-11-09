@@ -4,7 +4,7 @@ class CommentManager extends Manager
 {
     public function getComments($postId)
 {
-    $db = $this->dbConnect();
+    $db = $this->dbConnect();   
     $comments = $db->prepare('SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date FROM comments WHERE post_id = ? ORDER BY comment_date DESC');
     $comments->execute(array($postId));
 
@@ -12,11 +12,18 @@ class CommentManager extends Manager
 }
 public function postComment($postId, $author, $comment)
 {
-    $db = $this->dbConnect();
-    'SELECT comments.comment,users.pseudo FROM users,comments WHERE comments.author=users.id';         
+    $db = $this->dbConnect();        
     $comments = $db->prepare('INSERT INTO comments(post_id, author, comment, comment_date) VALUES(?, ?, ?, NOW())');
     $affectedLines = $comments->execute(array($postId, $author, $comment));    
     return $affectedLines;
+}
+    
+public function addPseudo()
+{
+    $db = $this->dbConnect();
+    $sth = $db->query('SELECT comments.comment,users.pseudo FROM users,comments WHERE comments.author=users.id');
+    
+    return $sth;
 }
 public function deleteCom($idCom)
 {
