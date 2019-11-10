@@ -18,13 +18,7 @@ public function postComment($postId, $author, $comment)
     return $affectedLines;
 }
     
-public function addPseudo()
-{
-    $db = $this->dbConnect();
-    $sth = $db->query('SELECT comments.comment,users.pseudo FROM users,comments WHERE comments.author=users.id');
-    $resultat=$sth->fetch();
-    return $resultat;
-}
+
 public function deleteCom($idCom)
 {
     $db = $this->dbConnect();

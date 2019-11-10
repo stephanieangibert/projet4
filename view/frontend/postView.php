@@ -18,7 +18,7 @@
         
               <ul class="menu">
                  <li class="inscript"><a href="index.php?action=subscribe">Inscription</a></li>                  
-                 <li><a href="index.php">Chapitres</a></li>
+                 <li><a href="index.php?action=listPosts">Chapitres</a></li>
               </ul>
              
        </nav>';
@@ -62,13 +62,12 @@
 
 
 // $post->closeCursor();
-$addPseud=new commentManager();
-$resultat=$addPseud->addPseudo();
+
 while ($comment = $comments->fetch())  
 {
  ?>
  
-  <p class="auteur"><strong><?php echo htmlspecialchars($resultat['pseudo']); ?></strong> le <?php echo $comment['comment_date']; ?></p>
+  <p class="auteur"><strong><?php echo htmlspecialchars(ucfirst($comment['author'])); ?></strong> le <?php echo $comment['comment_date']; ?></p>
 
  
  
@@ -94,7 +93,7 @@ if(isset($_SESSION['pseudo'])){
        
         <textarea type="text" name="comment" rows="10" cols="60" id="comment"></textarea>
         <br>
-        <input type="hidden" name="post" value="'.$_GET['id'].'"/>
+        <input type="hidden" name="post_id" value="'.$_GET['id'].'"/>
         
       <input type="submit" id="submit3" value="envoyer">
 
