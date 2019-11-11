@@ -1,7 +1,7 @@
  <!DOCTYPE html >
 <html lang="fr">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>       
         <title>Crud</title>     
         
     </head>
@@ -23,7 +23,7 @@
 
     <strong>Modification du billet</strong>
     <br/>
-<textarea rows="10" cols="60" name="content" id="commentaire" ><?php echo $sqeditpo['content']; ?></textarea>    
+<textarea rows="10" cols="500" name="content" id="commentaire" ><?php echo $sqeditpo['content']; ?></textarea>    
                             
 
 
@@ -46,14 +46,15 @@
     // langue
    //language : "fr", 
     // liste des plugins
+    content_css: "http://localhost/public/css/my_tiny_styles.css",  
     theme_advanced_toolbar_location : "top",
     theme_advanced_buttons1 : "bold,italic,underline,strikethrough,sup,forecolor,separator,"
     + "justifyleft,justifycenter,justifyright,justifyfull,formatselect,"
     + "bullist,numlist,outdent,indent,separator,cleanup,|,undo,redo,|,",
     theme_advanced_buttons2 : "",
     theme_advanced_buttons3 : "",
-    height:"250px",
-    width:"600px"
+    height:"450px",
+    width:"1000px"
   });
 
   

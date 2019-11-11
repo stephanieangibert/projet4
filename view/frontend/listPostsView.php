@@ -8,6 +8,7 @@ if(isset($_SESSION['admin'])){
         <li ><a href=index.php?action=disconnection>Deconnexion</a></li>    
         <li class="bienvenue"> Bienvenue   '.ucfirst($_SESSION["pseudo"]);echo'</li>     
         <p class="boutonvert"><a href="index.php?action=admin">ADMIN</a></p>      
+        </ul>
         </nav>';
           
       }elseif((strlen( $_SESSION ['pseudo']))!=0){
@@ -50,9 +51,9 @@ if(isset($_SESSION['admin'])){
                                <div id="oeil"><i class="fas fa-eye"> </i>
                                <h5>  Plus d'info click ici !</h5>
                                </div>                         
-                               </div>    
+                    </div>    
 
-    </div>
+</div>
 
 <p>Derniers billets du blog :</p>
 
@@ -68,15 +69,16 @@ while ($data = $posts->fetch())
         <em>le <?php echo $data['creation_date']; ?></em>
        
     </h3>
-   
-    <p>
-    <?php
-    // On affiche le contenu du billet
-    echo nl2br(($data['content']));
-    ?>   
+       
+           <p>
+             <?php           
+                   echo nl2br(($data['content'])); ?>     
   
-    <div class="comment" ><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Commentaires</a></div>
-    </p>
+                    <div class="comment" ><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Commentaires</a></div>
+            </p>
+                
+     
+      
 </div>
 <?php
 } 

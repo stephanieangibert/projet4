@@ -67,7 +67,7 @@
         echo'<td>' . $com['author'] . '</td>';
         echo'<td class="'.$couleur.'">' . $com['reporting'] . '</td>';
         echo'<td class="btn1">';
-        echo '<a class="btn1" href="index.php?action=edit&amp;id=' . $com['id'] . '">Lire</a>';
+        echo '<a class="btn1" href="index.php?action=repo&amp;id=' . $com['id'] . '">Annuler</a>';
         echo '</td>';   
         echo'<td class="btn3">';
         echo '<a class="btn3" href="index.php?action=delComments&amp;id=' . $com['id'] . ' ">Effacer</a>';
@@ -85,7 +85,7 @@
     </table>
     <table cellpadding="5" cellspacing="10">
     <thead>
-    <th>Commentaire</th>
+    <th>Titre</th>
     <th>Auteur</th>
     </thead>      
     <tbody>
@@ -124,7 +124,7 @@
     </tbody>
     </table>
     </body>
-    <a href="index.php?action=addPost" > <p class="titre">Ajouter un chapitre</p>></a>
+    <a href="index.php?action=addPost" > <p class="titre">Ajouter un chapitre</p></a>
     </html>                                       
     
                        

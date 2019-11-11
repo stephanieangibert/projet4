@@ -115,6 +115,7 @@ h6{
 {
     background-color:#CCCCCC;
     margin-bottom: 0%;
+        
     
 }
 .news
@@ -200,12 +201,10 @@ h6{
     color:white;
 
 }
-span
-{
-    padding: 5%;
-}
+
 .comment{
     background-color:#CCCCCC;
-    width: 800px;
+    width: 100%;
     margin-top: 0%;
 }
+

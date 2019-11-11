@@ -10,23 +10,23 @@
 <label >Billet Jean Forteroche</label>
 <table>
 <thead>
-<th>Billet</th>
+<th>
+<?php echo $sqeditpo['title']; ?> </label>
+</th>
 </thead>                      
 <tbody>
-<td>
-<?php echo $sqeditpo['title']; ?> </label>
-</td>
+
     <td>
 <?php echo $sqeditpo['content']; ?> </label>
 </td>
-<td>
-<?php echo $sqeditpo['creation_date']; ?> </label>
-</td>
-</tbody>
 
+</tbody>
 </table>
+<p>
+<?php echo $sqeditpo['creation_date']; ?> </label>
+</p>
 <div>
-<a class="btn" href="admin.php">Back</a>
+<a class="btn" href="index.php?action=admin">Retour sur l'administration du site</a>
 </div>
 </body>
 </html>

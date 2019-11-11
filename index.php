@@ -109,8 +109,18 @@ try {
                
                 
             }
+            elseif($_GET['action'] == 'repo'){
+                if (isset($_GET['id']) && $_GET['id'] > 0){
+                    displayUpdate($_GET['id']);
+                   
+                
+                    updRepo($_GET['id']);
+                }
+                else {
+                    throw new Exception('Tous les champs ne sont pas remplis !');
+                }
             
-            
+    }
 				
 			
     

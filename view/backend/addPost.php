@@ -40,6 +40,7 @@
     elements : "commentaire", 
     // en mode avancé, cela permet de choisir les plugins
     theme : "advanced", 
+    content_css: "http://localhost/public/css/my_tiny_styles.css",    
     // langue
    //language : "fr", 
     // liste des plugins

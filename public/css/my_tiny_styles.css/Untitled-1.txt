@@ -1,0 +1,5 @@
+textarea
+{
+ font-family: serif, arial, sans-serif;   
+}
+

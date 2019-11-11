@@ -126,6 +126,12 @@ function displayUpdate($idPt)
          
      }
 }
+function updRepo($id)
+{
+   $report= new ReportManager();
+   $repo= $report->deleteReporting($id);
+   header('Location: index.php?action=admin');
+}
          
             
          

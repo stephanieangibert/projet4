@@ -9,4 +9,11 @@ class ReportManager extends Manager
     $reportCom=$reporting->execute(array($id));
     return $reportCom;
 }
+public function deleteReporting($id)
+{
+    $db = $this->dbConnect();   
+    $reportingUpd=$db->prepare('UPDATE comments SET reporting=0 WHERE id = ?');
+    $repo=$reportingUpd->execute(array($id));
+    return $repo;
+}
 }
