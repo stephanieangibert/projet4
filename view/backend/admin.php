@@ -3,8 +3,7 @@
         <head>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
             <link rel="stylesheet" href="public/css/admin.css">
-            <title>Crud en php</title>    
-           
+            <title>Crud en php</title>             
     
         </head>
         <body>
@@ -18,11 +17,10 @@
     <th>Pseudo</th>
     </thead>                      
     <tbody>
-    <?php 
-         
-              //on formule notre requete 
+    <?php         
+            
               while ($user = $sql->fetch())
-           { //on cree les lignes du tableau avec chaque valeur retournée
+           { 
     
                 echo '<tr>';
                 echo'<td>' . $user['email'] . '</td>';
@@ -33,8 +31,7 @@
                 echo'<td class="btn3">';
                 echo '<a class="btn3"  href="index.php?action=delUsers&amp;id=' . $user['id'] . ' ">Effacer</a>';               
                 echo '</td>';
-                echo '</tr>';  };   
-               
+                echo '</tr>';  };             
                 
     
     ?>  
@@ -72,12 +69,10 @@
         echo'<td class="btn3">';
         echo '<a class="btn3" href="index.php?action=delComments&amp;id=' . $com['id'] . ' ">Effacer</a>';
         echo '</td>';
-        echo '</tr>';
-        
+        echo '</tr>';       
         
        
-    };
-   
+    };  
    
     ?>
     

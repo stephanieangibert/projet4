@@ -1,19 +1,18 @@
 <?php
 session_start();
-
-
 require_once('model/postManager.php'); 
 require_once('model/commentManager.php');
 require_once('model/reportManager.php');
 require_once('model/MemberManager.php');
+
 
 function listPosts()
 {
     $managerP=new PostManager();
     $posts=$managerP->getPosts();
     require('view/frontend/listPostsView.php');
+    
 }
-
 function post()
 {
     $managerPost=new PostManager();
@@ -39,9 +38,14 @@ function addComment($postId, $author, $comment)
 function reportComment($id,$postid)
 {
    $report= new ReportManager();
-   $reportCom=$report->reporting($id);
-   //$reportCom=reporting($id);
+   $reportCom=$report->reporting($id);   
+   if ( $reportCom === false) {
+      die('Impossible d\'ajouter le signalement !');
+  }
+  else {
    header('Location: index.php?action=post&id=' . $postid);
+  }
+ 
 }
 function displaySubscribe()
 {
@@ -64,9 +68,12 @@ function displaySubscribe()
                      if($mdp == $mdp1) {
                        $mdp= password_hash($_POST['pass'], PASSWORD_DEFAULT);
                        $mdp1 = password_hash($_POST['pass1'], PASSWORD_DEFAULT);                                     
-                          $insertmbr=$memberM->member($pseudo, $mail, $mdp,$admin); 
-                       
+                       $insertmbr=$memberM->member($pseudo, $mail, $mdp,$admin); 
+                       $_SESSION['pseudo']=$pseudo; 
+                                  
+                        
                         $erreur = "Votre compte a bien été créé !";
+                  
                      } else {
                         $erreur = "Vos mots de passe ne correspondent pas !";
                      }
@@ -84,63 +91,64 @@ function displaySubscribe()
          $erreur = "Tous les champs doivent être complétés !";
       }
 
-   }   
-       
+   }        
      
      require('view/frontend/subscribe.php');
 }
-function displayConnex()
+ function displayConnex()
 {
- 
-    if(isset($_POST['submitConnex'])){
-      $mailconnect = $_POST['email'];   
-      $mdpconnect=$_POST['pass']; 
+   
+  
+   if(isset($_POST['submitConnex'])){     
+      $mailconnect = htmlspecialchars($_POST['email']);   
+      $mdpconnect=htmlspecialchars($_POST['pass']); 
         if(isset($mailconnect) AND !empty($mdpconnect)) {    
            $memberM=new MemberManager();
 
          $userexist= $memberM->mailConnex($mailconnect);        
                       
-                 if($userexist->rowCount() == 1) {                 
+                 if($userexist->rowCount() == 1) {                
                
                  $userinfo=$userexist->fetch();
                   if(password_verify($mdpconnect,$userinfo['pass'])){               
                      $_SESSION['pseudo'] = $userinfo['pseudo'];                   
                      $_SESSION['id']=$userinfo['id']; 
                      $_SESSION['admin']=$userinfo['admin']; 
-                   
-                                   
-                    header('location:index.php');  
-                     
-                 
                   }  
                  
-                  else{ $erreur2 = "Mauvais mail ou mot de passe !";
-                    
+                  else{ 
+                     throw new Exception('Mauvais mail ou mot de passe !'); 
                   }                                 
       
-               } else {
-                 $erreur2 = "Mauvais mail ou mot de passe !";
+                } else {
+                  throw new Exception("Mauvais mail ou mot de passe !"); 
+                
                  }
             
            
-   } else {
-   $erreur2 = "Tous les champs doivent être complétés !"; 
-     
-
-    }
-   
-  
+                } else {
+                 throw new Exception("Tous les champs doivent être complétés !"); 
+    }  
+    
  }
- require('view/frontend/connexion.php');
- 
+
+   header('location:index.php'); 
 }    
- function displayDisconnection()
-{
-   session_destroy();
-   require('view/frontend/disconnection.php');
-   header('location:index.php');
-}
 
+  function displayDisconnection(){
+ session_destroy();
+  require('view/frontend/disconnection.php');
+  header('location:index.php'); 
+ }
+function listPosts2($erreur2){
+   $managerP=new PostManager();
+   $posts=$managerP->getPosts();
+   require('view/frontend/listPostsView.php');
+}
  
 
 
+        
+                               
+                 
+                  

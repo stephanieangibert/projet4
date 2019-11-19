@@ -39,15 +39,20 @@ try {
         elseif ($_GET['action'] == 'subscribe') {
             displaySubscribe();            
         }  
-        elseif ($_GET['action'] == 'connexion'){
-            displayConnex();
+        elseif ($_GET['action'] == 'connex'){
+         displayConnex();
+            
                        
         }  
         elseif ($_GET['action'] == 'disconnection'){
             displayDisconnection();                      
         }  
+        elseif($_GET['action'] == 'pass'){           
+            passWord();
+        }
         elseif($_GET['action'] == 'admin'){
             adminConnection();
+          
         }
         elseif($_GET['action'] == 'delUsers'){
             if (isset($_GET['id']) && $_GET['id'] > 0){
@@ -110,8 +115,7 @@ try {
                 
             }
             elseif($_GET['action'] == 'repo'){
-                if (isset($_GET['id']) && $_GET['id'] > 0){
-                    displayUpdate($_GET['id']);
+                if (isset($_GET['id']) && $_GET['id'] > 0){                  
                    
                 
                     updRepo($_GET['id']);
@@ -120,16 +124,22 @@ try {
                     throw new Exception('Tous les champs ne sont pas remplis !');
                 }
             
-    }
-				
-			
-    
+    }	    
     
          } else {
-        listPosts();
+             if (isset($_GET['erreur'])){
+                 listPosts2($_GET['erreur']);
+             }
+             else{
+                listPosts();
+
+             }          
+      
     }
 }
 catch(Exception $e) {
     echo 'Erreur : ' . $e->getMessage();
+    $erreur2=$e->getMessage();
+    header('location:index.php?erreur='.$erreur2);
 }
 

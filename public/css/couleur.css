@@ -115,6 +115,7 @@ h6{
 {
     background-color:#CCCCCC;
     margin-bottom: 0%;
+   
         
     
 }
@@ -124,6 +125,7 @@ h6{
     margin-left: 3%;
     
 }
+
 .titre{
    color:white;
 }
@@ -201,10 +203,104 @@ h6{
     color:white;
 
 }
+.publication{
+    color: orangered;
+    font-size: 150%;
+    font-weight: bold;
+    width: 800px;
+    text-align: center;
+}
+
 
 .comment{
     background-color:#CCCCCC;
     width: 100%;
     margin-top: 0%;
+}
+footer{
+    background-color: orangered;
+    color: white;
+    height: 72px;
+    
+}
+.fa-facebook-square{
+    font-size: 200%;
+    padding-right: 10%;
+    padding-left: 30%;
+}
+.fa-twitter-square{
+    font-size: 200%;
+    padding-right: 10%;
+
+}
+.fa-pinterest-square{
+    font-size: 200%;
+    padding-right: 10%;
+
+}
+.reseau{
+    width: 500px;
+}
+.pied
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.pied p{
+    font-weight: bold;
+}
+#submitmdp{
+background-color: orangered;
+}
+.jean
+{
+    width: 600px;
+}
+.back a{
+    text-decoration: none;
+    color:white;
+    background-color: orangered;
+    padding: 0.5%;
+    border: solid white;
+}
+.back{
+    padding-top: 5%;
+}
+@media all and (max-device-width:800px)
+{
+.banniere{
+    flex-direction: column;
+}
+#intro
+{
+    display: none;
+}
+#oeil
+{
+    display: none;
+}
+.fa-eye{
+    left:36%;
+    top:120%;
+}
+h5{
+    left:34%;
+    top:132%;
+
+}
+#intro{
+    width: 100%;
+    padding:0;
+}
+.billet{
+    font-size: 150%;
+    left:33%;
+}
+}
+@media all and (min-device-width:768px) and (max-device-width:1024px)
+{
+
 }
 

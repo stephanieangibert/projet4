@@ -23,8 +23,7 @@ public function member($pseudo, $mail, $mdp,$admin)
 {   
     $db = $this->dbConnect();
     $requser = $db->prepare("SELECT * FROM users WHERE email = ?");
-    $requser->execute(array($mailconnect));  
-    //$userexist = $requser->rowCount();   
+    $requser->execute(array($mailconnect));    
     return $requser; 
     
 } 

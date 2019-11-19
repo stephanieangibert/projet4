@@ -1,16 +1,16 @@
 <?php ob_start(); ?> 
 <nav>
 <H1>Jean Forteroche</H1>
-<a href="index.php?action=connexion"><div id="connexion">Connexion</div></a>
+<a href="index.php"><div id="connexion">Connexion</div></a>
                        
                 <ul class="menu">
                    <li class="inscript"><a href="index.php?action=subscribe">Inscription</a></li>                  
                    <li><a href="index.php">Chapitres</a></li>
                 </ul>
                <?php  if(isset($erreur2)){
-         echo '<font color="white">'. $erreur2.'</font>'; var_dump($erreur2); }
+         echo '<font color="white">'. $erreur2.'</font>';  }
      ?>
-         </nav>
+</nav>
 
 
 <div id="formulaire">

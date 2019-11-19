@@ -1,32 +1,31 @@
-.menu
+ .menu
 {
     display: flex;
     flex-direction: row;
  
-}
-nav{
+} 
+ nav{
     display: flex;
     flex-direction: row;  
     align-items: baseline;  
+    justify-content: flex-start;
    
-}
+} 
 #connex{
     display:flex;
     flex-direction:row;
     align-items: baseline; 
 }
-ul li{
-    padding-right: 20%;
+ul li{   
     list-style-type: none;
     
 }
 li{
-    color:white;
+    color:white;   
+    width: 300px;
    
 }
-.inscript{
-    padding-left: 72%;
-}
+
 nav a{
     text-decoration: none;
     color:white;
@@ -60,17 +59,21 @@ nav a{
 .bienvenue{
     font-size: 150%;
     color:white;
-    width: 1000px;
+    width: 300px;
+   
+    
+   
 }
 
 .boutonvert{
    
-    left:90%;  
+   
     list-style-type: none;
     background-color: chartreuse;
     border-radius:5%;
     padding:1%;
     font-weight: bold;
+    width: 100px;
 }
 #connexion{
    
@@ -82,3 +85,46 @@ nav a{
     border-radius: 5%;
     margin-right: 50%;
 }
+footer a{
+    color:white;
+}
+@media all and (max-device-width:800px)
+{
+nav{
+    flex-direction: column;
+}
+#submit2 {
+    margin-left: 0;
+    margin-top: 8%;
+}
+.menu{
+    flex-direction: column;  
+    padding:0; 
+}
+.inscript{
+    padding-left: 0;
+}
+#connex{
+    display: flex;
+    flex-direction: column;
+}
+.news{
+    width: 100%;
+    padding-left: 0%;
+    margin:0 auto;
+}
+#comment{
+    width: 250px;;
+}
+li.boutonvert{
+    width: 100px;
+}
+#formulaire{
+    width: 90%;
+}
+}
+@media all and (min-device-width:768px) and (max-device-width:1024px)
+{
+
+}
+

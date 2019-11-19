@@ -1,11 +1,10 @@
 
 <? ob_start(); ?> 
 <?php if (isset($_SESSION['pseudo'])){
-//if((strlen($_SESSION['pseudo']))!=0){
   
   echo '   <nav>
      <ul class="menu">             
-   <li ><a href=index.php?action=connexion>Deconnexion</a></li>    
+   <li ><a href=index.php?action=disconnection>Deconnexion</a></li>    
    <li class="bienvenue"> Bienvenue   '.ucfirst($_SESSION["pseudo"]);echo'</li>
    <li><a href="index.php">Chapitres</a></li>
      </ul>
@@ -14,7 +13,7 @@
   echo'
   <nav>
 <H1>Jean Forteroche</H1>
-          <a href="index.php?action=connexion"><div id="connexion">Connexion</div></a>
+          <a href="index.php"><div id="connexion">Connexion</div></a>
         
               <ul class="menu">
                  <li class="inscript"><a href="index.php?action=subscribe">Inscription</a></li>                  
@@ -51,7 +50,7 @@
    
     <p>
     <?php
-    // On affiche le contenu du billet
+  
     echo nl2br(($post['content']));
     ?>   
    
@@ -60,29 +59,24 @@
 </div>
 <?php
 
-
-// $post->closeCursor();
-
 while ($comment = $comments->fetch())  
 {
  ?>
  
   <p class="auteur"><strong><?php echo htmlspecialchars(ucfirst($comment['author'])); ?></strong> le <?php echo $comment['comment_date']; ?></p>
 
- 
- 
   
  
 
 <div class="signaler">   
-<p class="textcommentaire"><?php echo nl2br(($comment['comment'])); ?></p>
+<p class="textcommentaire"><?php echo nl2br(htmlspecialchars(($comment['comment']))); ?></p>
 <p id="signaler"><a href="index.php?action=reportComment&amp;id=<?php echo $comment['id']?>&postid=<?php echo $_GET['id']?>">signaler</a></p>
 
 </div>
 
 
 <?php 
-} // Fin de la boucle des commentaires
+} 
 $comments->closeCursor();
 if(isset($_SESSION['pseudo'])){
  echo'

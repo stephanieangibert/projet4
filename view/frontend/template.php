@@ -1,4 +1,4 @@
-<?session_start()?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -11,9 +11,14 @@
 	<title>Le Blog de l'écrivain</title>
 </head>
 <body>
- 
-  
-    <?= $content?>
+<?= $content?>
+  <footer>
+      <div class="pied">
+      <p>Venez me rejoindre sur les réseaux sociaux</p>
+      <p class="reseau"><a href="#fb"><i class="fab fa-facebook-square"></i></a><a href="#twi"><i class="fab fa-twitter-square"></i></a><a href="pinterest"><i class="fab fa-pinterest-square"></i></a></p>
+</div>
+    </footer>
+   
     <script src="public/js/intro.js"> </script>
 </body>
 </html>

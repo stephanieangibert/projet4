@@ -2,12 +2,12 @@
 <?php ob_start();?>
 <?php
 if(isset($_SESSION['admin'])){
-    if(($_SESSION['admin']=='1')>0){       
+    if($_SESSION['admin']=='1'){       
         echo'<nav>   
         <ul class="menu">             
         <li ><a href=index.php?action=disconnection>Deconnexion</a></li>    
         <li class="bienvenue"> Bienvenue   '.ucfirst($_SESSION["pseudo"]);echo'</li>     
-        <p class="boutonvert"><a href="index.php?action=admin">ADMIN</a></p>      
+        <li class="boutonvert"><a href="index.php?action=pass">ADMIN</a></li>      
         </ul>
         </nav>';
           
@@ -17,29 +17,30 @@ if(isset($_SESSION['admin'])){
           <ul class="menu">             
         <li ><a href=index.php?action=disconnection>Deconnexion</a></li>    
         <li class="bienvenue"> Bienvenue   '.ucfirst($_SESSION["pseudo"]);echo'</li>
-        <li><a href="index.php?action=listPosts">Chapitres</a></li>
+        <li><a href="#chapitres">Chapitres</a></li>
           </ul>
           </nav>';
      } }else{
-          echo'
-          <nav>
-      <H1>Jean Forteroche</H1>
-                  <a href="index.php?action=connexion"><div id="connexion">Connexion</div></a>
-                
-                      <ul class="menu">
-                         <li class="inscript"><a href="index.php?action=subscribe">Inscription</a></li>                  
-                         <li><a href="index.php">Chapitres</a></li>
-                      </ul>
-                     
-               </nav>';
-      
-      }?>
-    
-}
-
-
-
-              
+          echo'      
+               <nav>
+               <H1>Jean Forteroche</H1>
+                            <form id="connex" action="index.php?action=connex" method="POST">
+                                <label id="mailconnexion" for="mail" >E mail</label>
+                                <input  type="email" name="email" id="mail2"/>
+                                <label id="mdpconnexion" for="motdepasse" >Mot de passe</label>
+                                <input  type="password" name="pass" id="motdepasse22"/>
+                               <input type="submit" id="submit2" name="submitConnex" value="ok" >
+                               </form>       
+                               <ul class="menu">
+                                  <li class="inscript"><a href="index.php?action=subscribe">Inscription</a></li>                  
+                                  <li><a href="#chapitres">Chapitres</a></li>
+                               </ul>
+                              
+                </nav>';               
+            }?>
+            <?php  if(isset($erreur2)){
+                              echo '<font color="white">'. $erreur2.'</font>'; }
+                          ?>               
 <div class="banniere">
             <div class="image"><img src="public/image/livre.jpg">
                  <h2 class="billet">Billet simple pour l'Alaska</h2>
@@ -54,29 +55,26 @@ if(isset($_SESSION['admin'])){
                     </div>    
 
 </div>
-
-<p>Derniers billets du blog :</p>
-
+<p class="publication">Mes publications épisodiques</p>
 
 <?php
 
 while ($data = $posts->fetch())
 {
     ?>
-<div class="news">
+<div class="news" id="chapitres">
     <h3 class="titre">
         <?php echo htmlspecialchars($data['title']); ?>
-        <em>le <?php echo $data['creation_date']; ?></em>
+        <em>le <?php echo htmlspecialchars($data['creation_date']); ?></em>
        
     </h3>
        
            <p>
              <?php           
-                   echo nl2br(($data['content'])); ?>     
+                   echo nl2br($data['content']); ?>     
   
                     <div class="comment" ><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Commentaires</a></div>
-            </p>
-                
+            </p>               
      
       
 </div>
@@ -89,3 +87,15 @@ $posts->closeCursor();
 <?php $content = ob_get_clean(); ?>
 
 <?php require('view/frontend/template.php'); ?>
+                          
+                            
+                                 
+      
+    
+      
+    
+
+
+
+
+              
