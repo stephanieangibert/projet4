@@ -38,8 +38,8 @@ if(isset($_SESSION['admin'])){
                               
                 </nav>';               
             }?>
-            <?php  if(isset($erreur2)){
-                              echo '<font color="white">'. $erreur2.'</font>'; }
+            <?php  if(isset($erreur3)){
+                              echo '<font color="white">'. $erreur3.'</font>'; }
                           ?>               
 <div class="banniere">
             <div class="image"><img src="public/image/livre.jpg">

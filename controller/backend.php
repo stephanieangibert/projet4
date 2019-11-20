@@ -51,8 +51,8 @@ function deletePosts($idPost)
 {   
     $post=new PostManager();
     $delPost=$post->deletePost($idPost);
-    $delComAssoc=$post->deleteComAssociatedPost($idPost); 
-    header('location:index.php?action=delComments&amp;id=' .$idPost);
+    $delComAssoc=$post->deleteComAssociatedPost($idPost);   
+   header('location:index.php?action=admin');
 }
 function editUser($idUs)
 {
@@ -65,7 +65,7 @@ function editPost($idPt)
 { 
     $postcom=new PostManager();
     $sqeditpo=$postcom->editPosts($idPt);    
-    require('view/backend/editPost.php'); 
+    require('view/backend/editPost.php');    
 }
 function gotoAddPost()
 {

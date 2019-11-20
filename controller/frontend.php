@@ -68,8 +68,7 @@ function displaySubscribe()
                      if($mdp == $mdp1) {
                        $mdp= password_hash($_POST['pass'], PASSWORD_DEFAULT);
                        $mdp1 = password_hash($_POST['pass1'], PASSWORD_DEFAULT);                                     
-                       $insertmbr=$memberM->member($pseudo, $mail, $mdp,$admin); 
-                       $_SESSION['pseudo']=$pseudo; 
+                       $insertmbr=$memberM->member($pseudo, $mail, $mdp,$admin);                   
                                   
                         
                         $erreur = "Votre compte a bien été créé !";
@@ -117,33 +116,37 @@ function displaySubscribe()
                   }  
                  
                   else{ 
-                     throw new Exception('Mauvais mail ou mot de passe !'); 
+                     throw new Exception($erreur3='Mauvais mail ou mot de passe !'); 
+                     header('location:index.php?erreur');
+             
                   }                                 
       
                 } else {
                   throw new Exception("Mauvais mail ou mot de passe !"); 
+                 header('location:index.php?erreur');
                 
                  }
             
            
                 } else {
                  throw new Exception("Tous les champs doivent être complétés !"); 
+                 header('location:index.php?erreur');
     }  
-    
+   
  }
 
    header('location:index.php'); 
 }    
 
   function displayDisconnection(){
- session_destroy();
-  require('view/frontend/disconnection.php');
+ session_destroy();  
   header('location:index.php'); 
  }
-function listPosts2($erreur2){
+function listPosts2($erreur3){
    $managerP=new PostManager();
    $posts=$managerP->getPosts();
    require('view/frontend/listPostsView.php');
+   header('location:index.php?erreur='.$erreur3);
 }
  
 

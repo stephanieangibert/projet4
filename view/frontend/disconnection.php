@@ -1,4 +1,4 @@
-<?php ob_start(); ?> 
+<!-- <?php ob_start(); ?> 
 <nav>
 <H1>Jean Forteroche</H1>
 <a href="index.php?action=connexion"><div id="connexion">Connexion</div></a>
@@ -25,4 +25,4 @@
 
          </div>
 <?php $content = ob_get_clean(); ?>
- <?php require('view/frontend/template.php');?>
+ <?php require('view/frontend/template.php');?> -->

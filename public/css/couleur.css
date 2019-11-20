@@ -277,6 +277,9 @@ background-color: orangered;
 {
     display: none;
 }
+.publictaion{
+    width: 370px;
+}
 #oeil
 {
     display: none;
@@ -297,6 +300,16 @@ h5{
 .billet{
     font-size: 150%;
     left:33%;
+}
+.signaler
+{
+    justify-content: space-around;
+}
+#mail{
+    margin-left: 16%;
+}
+#pseudo{
+    margin-left: 16%;
 }
 }
 @media all and (min-device-width:768px) and (max-device-width:1024px)

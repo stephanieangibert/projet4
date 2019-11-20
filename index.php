@@ -138,8 +138,8 @@ try {
     }
 }
 catch(Exception $e) {
-    echo 'Erreur : ' . $e->getMessage();
-    $erreur2=$e->getMessage();
-    header('location:index.php?erreur='.$erreur2);
+    
+    $erreur3=$e->getMessage();
+    header('location:index.php?erreur='.$erreur3);
 }
 
