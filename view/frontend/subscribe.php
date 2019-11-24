@@ -14,6 +14,7 @@
 
 
 <div id="formulaire">
+    <p class="mot">*le mot de passe doit avoir au moins 6 caractères 1 chiffre et une majuscule</p>
 <form action="" method="POST">
     <p ><label for="pseudo" >Pseudo</label><input  type="text" name="pseudo" id="pseudo" value="<?php if(isset($pseudo)) { echo $pseudo; } ?>" /></p>
     <p ><label for="email" >E mail</label><input  type="email" name="email" id="mail" value="<?php if(isset($mail)) { echo $mail; } ?>" /></p>

@@ -70,7 +70,10 @@ while ($comment = $comments->fetch())
 
 <div class="signaler">   
 <p class="textcommentaire"><?php echo nl2br(htmlspecialchars(($comment['comment']))); ?></p>
+
 <p id="signaler"><a href="index.php?action=reportComment&amp;id=<?php echo $comment['id']?>&postid=<?php echo $_GET['id']?>">signaler</a></p>
+
+
 
 </div>
 

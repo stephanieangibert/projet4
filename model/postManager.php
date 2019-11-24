@@ -38,14 +38,7 @@ public function deletePost($idPost)
     $delPost=$delPos->fetch();
     return $delPost;
 }
-public function deleteComAssociatedPost($idPost)
-    {
-        $db = $this->dbConnect();
-        $delComAs=$db->prepare("DELETE FROM comments  WHERE post_id = ?");
-        $delComAs->execute(array($idPost));
-        $delComAssoc=$delComAs->fetch();
-        return $delComAssoc;
-    }
+
 public function editPosts($idPt)
 {
     $db = $this->dbConnect();

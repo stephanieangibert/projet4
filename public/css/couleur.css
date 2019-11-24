@@ -102,6 +102,10 @@ h6{
     display:flex;
     flex-direction: row;
 }
+.mot{
+    color:red;
+    text-align: center;
+}
 #submit2{
     margin-left: 4%;
 }
@@ -202,6 +206,10 @@ h6{
     text-decoration: none;
     color:white;
 
+}
+#message{
+    
+    color: white;
 }
 .publication{
     color: orangered;
@@ -311,9 +319,17 @@ h5{
 #pseudo{
     margin-left: 16%;
 }
+.publication{
+    text-align: left;
+}
 }
 @media all and (min-device-width:768px) and (max-device-width:1024px)
 {
-
+.image img{
+    padding-left: 0;
+}
+.publication{
+    text-align: center;
+}
 }
 

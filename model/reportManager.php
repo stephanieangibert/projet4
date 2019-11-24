@@ -9,6 +9,7 @@ class ReportManager extends Manager
     $reportCom=$reporting->execute(array($id));
     return $reportCom;
 }
+
 public function deleteReporting($id)
 {
     $db = $this->dbConnect();   

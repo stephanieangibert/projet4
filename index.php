@@ -18,7 +18,7 @@ try {
         elseif ($_GET['action'] == 'addComment') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 if (!empty($_POST['comment'])) {
-                    addComment($_GET['id'], $_SESSION['pseudo'], $_POST['comment']);
+                    addComment($_GET['id'], $_SESSION['pseudo'], htmlspecialchars($_POST['comment']));
                 }
                 else {
                     throw new Exception('Tous les champs ne sont pas remplis !');
@@ -31,6 +31,7 @@ try {
         elseif($_GET['action']=='reportComment'){
             if (isset($_GET['id']) && $_GET['id'] > 0){
                 reportComment($_GET['id'],$_GET['postid']);
+                nbreReport($_GET['id'],$_GET['postid']);
             }
             else {
                 throw new Exception('Tous les champs ne sont pas remplis !');
@@ -47,10 +48,11 @@ try {
         elseif ($_GET['action'] == 'disconnection'){
             displayDisconnection();                      
         }  
-        elseif($_GET['action'] == 'pass'){           
-            passWord();
-        }
+        // elseif($_GET['action'] == 'pass'){           
+        //     passWord();
+        // }
         elseif($_GET['action'] == 'admin'){
+         
             adminConnection();
           
         }

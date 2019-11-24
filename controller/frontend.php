@@ -38,14 +38,15 @@ function addComment($postId, $author, $comment)
 function reportComment($id,$postid)
 {
    $report= new ReportManager();
-   $reportCom=$report->reporting($id);   
+   $reportCom=$report->reporting($id);
+
    if ( $reportCom === false) {
       die('Impossible d\'ajouter le signalement !');
   }
   else {
    header('Location: index.php?action=post&id=' . $postid);
   }
- 
+
 }
 function displaySubscribe()
 {
@@ -65,16 +66,20 @@ function displaySubscribe()
                   $memberM=new MemberManager();
                   $mailexist=$memberM->subscribe($mail);              
                   if($mailexist == 0) {
+                                          
                      if($mdp == $mdp1) {
+                        if(preg_match('#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6,}$#', $mdp)){
                        $mdp= password_hash($_POST['pass'], PASSWORD_DEFAULT);
                        $mdp1 = password_hash($_POST['pass1'], PASSWORD_DEFAULT);                                     
-                       $insertmbr=$memberM->member($pseudo, $mail, $mdp,$admin);                   
-                                  
-                        
-                        $erreur = "Votre compte a bien été créé !";
-                  
-                     } else {
-                        $erreur = "Vos mots de passe ne correspondent pas !";
+                       $insertmbr=$memberM->member($pseudo, $mail, $mdp,$admin);                
+                       $erreur = "Votre compte a bien été créé !"; }        
+                       
+                                      
+                      else {$erreur = "Doit comporter au moins 6 caractères et 1 majuscule !";}
+                               
+
+                     }else{
+                        $erreur = "Vos mots de passe ne correspondent pas";
                      }
                   } else {
                      $erreur = "Adresse mail déjà utilisée !";
@@ -117,20 +122,20 @@ function displaySubscribe()
                  
                   else{ 
                      throw new Exception($erreur3='Mauvais mail ou mot de passe !'); 
-                     header('location:index.php?erreur');
+                   
              
                   }                                 
       
                 } else {
                   throw new Exception("Mauvais mail ou mot de passe !"); 
-                 header('location:index.php?erreur');
+              
                 
                  }
             
            
                 } else {
                  throw new Exception("Tous les champs doivent être complétés !"); 
-                 header('location:index.php?erreur');
+                
     }  
    
  }

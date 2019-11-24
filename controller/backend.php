@@ -5,28 +5,30 @@ require_once('model/commentManager.php');
 require_once('model/reportManager.php');
 require_once('model/MemberManager.php');
 
-function passWord(){
+/* function passWord(){
 
     require('view/backend/password.php'); 
-}
+} */
+
 function adminConnection()
 {   
-   if ((isset($_POST['submitmdp'])&& $_POST['pass']=="jean")||$_SESSION['admin']==1){
-       
+   if ($_SESSION['admin']=='1'){
+  
         $memberU=new MemberManager();
         $commentU=new CommentManager();
         $postU=new PostManager();
         $sql=$memberU->addUsers();
         $sqcom=$commentU->addComments();
-        $sqposts=$postU->addPosts();
-        
+        $sqposts=$postU->addPosts();   
+       
+       
         require('view/backend/admin.php');
    }
 
-       else{          
+       else{      
           
-           require('view/backend/password.php');
-           echo   "<font color='white'>Vous n'êtes pas l'administrateur.</font><br/>" ;
+         
+           header('location:index.php');
          
        }
     
@@ -50,8 +52,7 @@ function deleteComments($idCom)
 function deletePosts($idPost)
 {   
     $post=new PostManager();
-    $delPost=$post->deletePost($idPost);
-    $delComAssoc=$post->deleteComAssociatedPost($idPost);   
+    $delPost=$post->deletePost($idPost);     
    header('location:index.php?action=admin');
 }
 function editUser($idUs)

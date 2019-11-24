@@ -20,6 +20,7 @@
     </footer>
    
     <script src="public/js/intro.js"> </script>
+   
 </body>
 </html>
  

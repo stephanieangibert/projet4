@@ -7,7 +7,7 @@ if(isset($_SESSION['admin'])){
         <ul class="menu">             
         <li ><a href=index.php?action=disconnection>Deconnexion</a></li>    
         <li class="bienvenue"> Bienvenue   '.ucfirst($_SESSION["pseudo"]);echo'</li>     
-        <li class="boutonvert"><a href="index.php?action=pass">ADMIN</a></li>      
+        <li class="boutonvert"><a href="index.php?action=admin">ADMIN</a></li>      
         </ul>
         </nav>';
           
